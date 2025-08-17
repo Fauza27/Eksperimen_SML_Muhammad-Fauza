@@ -27,3 +27,11 @@ jobs:
       - name: Run preprocessing
         run: |
           python preprocessing/automate_Muhammad_Fauza.py
+
+      - name: Commit processed file
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add preprocessing/landmine_preprocessing.csv
+          git commit -m "Update processed dataset via GitHub Actions" || echo "No changes to commit"
+          git push
